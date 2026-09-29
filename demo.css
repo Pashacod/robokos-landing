@@ -199,6 +199,94 @@
     padding-top: 0.25rem;
 }
 
+.demo-cta-wrap .btn {
+    padding: 1rem 3.5rem;
+    font-size: 1.05rem;
+}
+
+.demo-msg-widget {
+    justify-content: flex-start;
+}
+
+.demo-widget-card {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--border-strong);
+    border-radius: 1rem;
+    background-color: rgba(225, 230, 235, 0.06);
+}
+
+.demo-badge {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    background-color: rgba(0, 217, 255, 0.14);
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.demo-lawn {
+    position: relative;
+    height: 3.5rem;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+    background:
+        repeating-linear-gradient(90deg, rgba(0, 217, 255, 0.08) 0, rgba(0, 217, 255, 0.08) 2px, transparent 2px, transparent 14px),
+        rgba(225, 230, 235, 0.04);
+    overflow: hidden;
+}
+
+.demo-robot {
+    position: absolute;
+    left: -10%;
+    font-size: 1.3rem;
+    animation: demo-mow 3.4s linear infinite;
+}
+
+@keyframes demo-mow {
+    0% {
+        left: -10%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+.demo-widget-more {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--fg);
+    opacity: 0.7;
+}
+
+.demo-widget-stats {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.demo-widget-stats dt {
+    font-size: 0.8rem;
+    color: var(--fg);
+    opacity: 0.65;
+}
+
+.demo-widget-stats dd {
+    margin: 0.1rem 0 0;
+    font-weight: 700;
+    color: var(--fg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .demo-robot {
+        animation: none;
+        left: 40%;
+    }
+}
+
 @media (max-width: 480px) {
     .demo-chat {
         min-height: 28rem;
