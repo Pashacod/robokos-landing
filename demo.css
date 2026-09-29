@@ -242,11 +242,86 @@
 }
 
 .demo-widget-card {
+    position: relative;
     width: 100%;
     padding: 1rem 1.25rem;
     border: 1px solid var(--border-strong);
     border-radius: 1rem;
     background-color: rgba(225, 230, 235, 0.06);
+}
+
+.demo-widget-card.tier-easy {
+    border-color: #2ecc71;
+    box-shadow: 0 0 0 1px rgba(46, 204, 113, 0.35), 0 0 24px rgba(46, 204, 113, 0.2);
+}
+
+.demo-widget-card.tier-medium {
+    border-color: #f5c542;
+    box-shadow: 0 0 0 1px rgba(245, 197, 66, 0.35), 0 0 24px rgba(245, 197, 66, 0.18);
+}
+
+.demo-widget-card.tier-hard {
+    border-color: #ff5c5c;
+    box-shadow: 0 0 0 1px rgba(255, 92, 92, 0.4), 0 0 24px rgba(255, 92, 92, 0.22);
+    animation: demo-card-shake 0.5s ease;
+}
+
+@keyframes demo-card-shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-6px);
+    }
+
+    40% {
+        transform: translateX(6px);
+    }
+
+    60% {
+        transform: translateX(-4px);
+    }
+
+    80% {
+        transform: translateX(4px);
+    }
+}
+
+.demo-confetti-piece {
+    position: absolute;
+    top: -10px;
+    width: 6px;
+    height: 10px;
+    border-radius: 1px;
+    opacity: 0.9;
+    animation-name: demo-confetti-fall;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+    pointer-events: none;
+}
+
+@keyframes demo-confetti-fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(140px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .demo-widget-card.tier-hard {
+        animation: none;
+    }
+
+    .demo-confetti-piece {
+        animation: none;
+        opacity: 0;
+    }
 }
 
 .demo-badge {

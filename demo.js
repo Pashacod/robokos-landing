@@ -226,12 +226,32 @@
 
     function complexityCategory(points) {
         if (points <= 3) {
-            return { emoji: "🟢", label: "Лёгкий объект" };
+            return { emoji: "🟢", label: "Лёгкий объект", tier: "easy" };
         }
         if (points <= 5) {
-            return { emoji: "🟡", label: "Средний по сложности" };
+            return { emoji: "🟡", label: "Средний по сложности", tier: "medium" };
         }
-        return { emoji: "🔴", label: "Повышенной сложности" };
+        return { emoji: "🔴", label: "Повышенной сложности", tier: "hard" };
+    }
+
+    function launchConfetti(container) {
+        var colors = ["#00d9ff", "#33e4ff", "#7cfc00", "#ffd166", "#ff6b6b"];
+        var pieces = [];
+        for (var i = 0; i < 20; i += 1) {
+            var piece = document.createElement("span");
+            piece.className = "demo-confetti-piece";
+            piece.style.left = Math.random() * 100 + "%";
+            piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            piece.style.animationDelay = (Math.random() * 0.3) + "s";
+            piece.style.animationDuration = (0.9 + Math.random() * 0.6) + "s";
+            container.appendChild(piece);
+            pieces.push(piece);
+        }
+        setTimeout(function () {
+            pieces.forEach(function (piece) {
+                piece.remove();
+            });
+        }, 2000);
     }
 
     function computePlan(state) {
@@ -269,7 +289,7 @@
 
     function appendResultCard(state, plan, title) {
         var card = document.createElement("div");
-        card.className = "demo-widget-card";
+        card.className = "demo-widget-card tier-" + plan.complexity.tier;
 
         var badge = document.createElement("div");
         badge.className = "demo-badge";
@@ -313,6 +333,10 @@
         card.appendChild(stats);
 
         appendWidget(card);
+
+        if (plan.complexity.tier === "easy") {
+            launchConfetti(card);
+        }
     }
 
     log.addEventListener("click", function () {
@@ -466,6 +490,22 @@
 
         appendResultCard(state, plan, title);
         await delay(300);
+
+        var tierLines = {
+            easy: L(
+                "Отличная новость — участок несложный, роботы справятся легко и предсказуемо.",
+                "Лёгкая прогулка! Даже наши роботы зевнут от скуки. 😄"
+            ),
+            medium: L(
+                "Средняя сложность — роботам придётся постараться, но результат будет стабильным.",
+                "Не сахар, но и не смертельно — обычная рабочая рутина для наших роботов."
+            ),
+            hard: L(
+                "Участок повышенной сложности — здесь понадобится продуманная настройка и больше техники.",
+                "Ого, серьёзный вызов! Наши роботы любят такие — будет о чём потом рассказывать другим роботам. 😅"
+            ),
+        };
+        await appendBotMessage(tierLines[plan.complexity.tier]);
 
         if (state.relief === "сложный") {
             await appendBotMessage("Из-за сложного рельефа закладываем модель с усиленной проходимостью — отсюда дополнительные роботы в расчёте.");

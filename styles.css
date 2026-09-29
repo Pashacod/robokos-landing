@@ -149,17 +149,32 @@ section {
     border: none;
     box-shadow: 0 4px 0 #0099b8, 0 8px 16px rgba(0, 0, 0, 0.35);
     transition: transform 0.12s ease, box-shadow 0.12s ease;
+    animation: btn-invite 2.2s ease-in-out infinite;
 }
 
 .btn-secondary:hover {
     opacity: 1;
-    transform: translateY(-2px);
+    animation-play-state: paused;
+    transform: translateY(-2px) scale(1.04);
     box-shadow: 0 6px 0 #0099b8, 0 10px 20px rgba(0, 0, 0, 0.4);
 }
 
 .btn-secondary:active {
-    transform: translateY(2px);
+    animation-play-state: paused;
+    transform: translateY(2px) scale(1);
     box-shadow: 0 2px 0 #0099b8, 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes btn-invite {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        box-shadow: 0 4px 0 #0099b8, 0 8px 16px rgba(0, 0, 0, 0.35);
+    }
+
+    50% {
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: 0 4px 0 #0099b8, 0 14px 30px rgba(0, 217, 255, 0.5);
+    }
 }
 
 .reveal {
