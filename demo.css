@@ -1,0 +1,211 @@
+.demo-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+}
+
+.demo-back {
+    align-self: flex-start;
+    margin-bottom: 1.5rem;
+    color: var(--fg);
+    opacity: 0.7;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.demo-back:hover {
+    opacity: 1;
+}
+
+.demo-chat {
+    width: 100%;
+    max-width: 32rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-strong);
+    border-radius: 1rem;
+    overflow: hidden;
+    background-color: rgba(225, 230, 235, 0.02);
+    min-height: 32rem;
+    max-height: 80vh;
+}
+
+.demo-chat-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+}
+
+.demo-chat-avatar {
+    font-size: 1.5rem;
+}
+
+.demo-chat-title {
+    font-weight: bold;
+    color: var(--fg);
+}
+
+.demo-chat-subtitle {
+    margin-top: 0.15rem;
+    font-size: 0.75rem;
+    color: var(--fg);
+    opacity: 0.6;
+}
+
+.demo-chat-log {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.demo-msg {
+    display: flex;
+}
+
+.demo-msg-bot {
+    justify-content: flex-start;
+}
+
+.demo-msg-user {
+    justify-content: flex-end;
+}
+
+.demo-bubble {
+    max-width: 82%;
+    padding: 0.65rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    white-space: pre-line;
+    text-align: left;
+}
+
+.demo-msg-bot .demo-bubble {
+    background-color: rgba(225, 230, 235, 0.08);
+    color: var(--fg);
+    border-bottom-left-radius: 0.25rem;
+}
+
+.demo-msg-user .demo-bubble {
+    background-color: var(--accent);
+    color: var(--bg);
+    border-bottom-right-radius: 0.25rem;
+    font-weight: 600;
+}
+
+.demo-typing .demo-bubble {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+    padding: 0.75rem 1rem;
+}
+
+.demo-typing-dot {
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    background-color: var(--fg);
+    opacity: 0.5;
+    animation: demo-typing-bounce 1s infinite ease-in-out;
+}
+
+.demo-typing-dot:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.demo-typing-dot:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes demo-typing-bounce {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+
+    30% {
+        transform: translateY(-4px);
+        opacity: 1;
+    }
+}
+
+.demo-chat-input-area {
+    border-top: 1px solid var(--border);
+    padding: 1rem 1.25rem;
+}
+
+.demo-chat-form {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.demo-chat-form input {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 0.65rem 1rem;
+    background-color: transparent;
+    color: var(--fg);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    border: 1px solid var(--border-strong);
+    border-radius: 0.5rem;
+}
+
+.demo-chat-form input:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.demo-chat-form button {
+    flex-shrink: 0;
+    padding: 0.65rem 1.25rem;
+}
+
+.demo-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.demo-chip {
+    padding: 0.55rem 1rem;
+    border-radius: 999px;
+    border: 1px solid var(--accent);
+    background-color: transparent;
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.demo-chip:hover {
+    background-color: var(--accent);
+    color: var(--bg);
+}
+
+.demo-cta-wrap {
+    display: flex;
+    justify-content: center;
+    padding-top: 0.25rem;
+}
+
+@media (max-width: 480px) {
+    .demo-chat {
+        min-height: 28rem;
+        max-height: 85vh;
+    }
+
+    .demo-bubble {
+        font-size: 0.9rem;
+    }
+}
