@@ -33,6 +33,39 @@
     max-height: 80vh;
 }
 
+@media (min-width: 900px) {
+    .demo-chat {
+        max-width: 46rem;
+        min-height: 42rem;
+    }
+
+    .demo-chat-header {
+        padding: 1.25rem 1.5rem;
+    }
+
+    .demo-chat-avatar {
+        font-size: 1.8rem;
+    }
+
+    .demo-chat-title {
+        font-size: 1.1rem;
+    }
+
+    .demo-chat-log {
+        padding: 1.5rem 1.75rem;
+        gap: 1rem;
+    }
+
+    .demo-bubble {
+        font-size: 1.05rem;
+        padding: 0.8rem 1.2rem;
+    }
+
+    .demo-chat-input-area {
+        padding: 1.25rem 1.75rem;
+    }
+}
+
 .demo-chat-header {
     display: flex;
     align-items: center;
