@@ -6,12 +6,14 @@
         "уп": "управляющая компания",
         "тсж": "ТСЖ / жилой комплекс",
         "бц": "бизнес-центр",
+        "физ": "частный дом",
     };
 
     var FREQUENCY_MATRIX = {
         "уп": { "эконом": "1 раз в неделю", "стандарт": "1–2 раза в неделю", "интенсив": "3 раза в неделю" },
         "тсж": { "эконом": "1 раз в 2 недели", "стандарт": "1 раз в неделю", "интенсив": "2 раза в неделю" },
         "бц": { "эконом": "1–2 раза в неделю", "стандарт": "2–3 раза в неделю", "интенсив": "ежедневно" },
+        "физ": { "эконом": "1 раз в 2 недели", "стандарт": "1 раз в неделю", "интенсив": "2 раза в неделю" },
     };
 
     var AREA_PER_ROBOT = 3000;
@@ -259,6 +261,9 @@
         if (state.type === "тсж") {
             return "🏡 Уютный двор";
         }
+        if (state.type === "физ") {
+            return "🏠 Личный проект";
+        }
         return "🤖 Обычный, но важный объект";
     }
 
@@ -317,7 +322,13 @@
     });
 
     async function run() {
-        var sassy = true;
+        await appendBotMessage("Прежде чем начнём — каким должен быть диспетчер?");
+        var personalityChip = await waitForChipAnswer([
+            { label: "Обычный, вежливый", value: "normal" },
+            { label: "Дерзкий, с характером", value: "sassy" },
+        ]);
+        appendUserMessage(personalityChip.label);
+        var sassy = personalityChip.value === "sassy";
 
         function L(normalText, sassyText) {
             return sassy ? sassyText : normalText;
@@ -358,6 +369,7 @@
             { label: "Управляющая компания", value: "уп" },
             { label: "ТСЖ / жилой комплекс", value: "тсж" },
             { label: "Бизнес-центр", value: "бц" },
+            { label: "Физлицо / частный дом", value: "физ" },
         ]);
         appendUserMessage(typeChip.label);
 
