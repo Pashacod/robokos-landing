@@ -235,7 +235,7 @@
     }
 
     function launchConfetti(container) {
-        var colors = ["#00d9ff", "#33e4ff", "#7cfc00", "#ffd166", "#ff6b6b"];
+        var colors = ["#3e6ae1", "#171a20", "#8e8e8e", "#5c5e62", "#d0d1d2"];
         var pieces = [];
         for (var i = 0; i < 20; i += 1) {
             var piece = document.createElement("span");
