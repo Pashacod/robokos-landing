@@ -338,11 +338,26 @@
             "Здравствуйте! Я диспетчер РобоКос 🤖. Помогу прикинуть, сколько роботов нужно вашему объекту.",
             "О, живой человек! 🤖 Ладно, так и быть — помогу прикинуть, сколько моих собратьев понадобится вашему газону. Не удивляйтесь, если они окажутся расторопнее вашей прошлой бригады."
         ));
+
+        await appendBotMessage("Какой это тип объекта?");
+        var typeChip = await waitForChipAnswer([
+            { label: "Управляющая компания", value: "уп" },
+            { label: "ТСЖ / жилой комплекс", value: "тсж" },
+            { label: "Бизнес-центр", value: "бц" },
+            { label: "Физлицо / частный дом", value: "физ" },
+        ]);
+        appendUserMessage(typeChip.label);
+
+        var isPerson = typeChip.value === "физ";
+
         await appendBotMessage(L(
-            "Как называется ваш объект — ЖК, БЦ или УК?",
-            "Как называется территория, которую мы скоро возьмём под контроль? В хорошем смысле. Пока что."
+            isPerson ? "Как вас зовут?" : "Как называется ваш объект — ЖК, БЦ или УК?",
+            isPerson ? "Как к вам обращаться?" : "Как называется территория, которую мы скоро возьмём под контроль? В хорошем смысле. Пока что."
         ));
-        var name = await waitForTextAnswer({ type: "text", placeholder: "Например, ЖК «Сосновый бор»" });
+        var name = await waitForTextAnswer({
+            type: "text",
+            placeholder: isPerson ? "Например, Иван" : "Например, ЖК «Сосновый бор»",
+        });
         appendUserMessage(name);
 
         await appendBotMessage(L(
@@ -364,14 +379,13 @@
             ));
         }
 
-        await appendBotMessage("Какой это тип объекта?");
-        var typeChip = await waitForChipAnswer([
-            { label: "Управляющая компания", value: "уп" },
-            { label: "ТСЖ / жилой комплекс", value: "тсж" },
-            { label: "Бизнес-центр", value: "бц" },
-            { label: "Физлицо / частный дом", value: "физ" },
-        ]);
-        appendUserMessage(typeChip.label);
+        if (isPerson && sassy) {
+            await appendBotMessage(
+                area < 1000
+                    ? "На вас, конечно, много не заработаешь — но газон есть газон, каждый на счету! 😄"
+                    : "Частник с таким газоном? Уважаю замах. Ладно, тоже возьмёмся."
+            );
+        }
 
         await appendBotMessage("Какой рельеф участка?");
         var reliefChip = await waitForChipAnswer([
