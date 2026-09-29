@@ -10,7 +10,21 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
+    var contact = document.getElementById("request-contact");
+    var contactError = document.getElementById("request-contact-error");
+
     submitButton.addEventListener("click", function () {
+        if (contact && !contact.value.trim()) {
+            contactError.hidden = false;
+            contact.setAttribute("aria-invalid", "true");
+            result.hidden = true;
+            contact.focus();
+            return;
+        }
+        if (contact) {
+            contactError.hidden = true;
+            contact.removeAttribute("aria-invalid");
+        }
         // No real submission: this prototype never sends or stores field
         // values, and the message shown below is static regardless of input.
         result.hidden = false;

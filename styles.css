@@ -466,3 +466,18 @@ section {
         padding: 3rem 1.25rem;
     }
 }
+
+.hero-cta {
+    margin-top: 1.5rem;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+.required-mark {
+    color: var(--accent);
+}
+
+.field-error {
+    margin-top: -0.75rem;
+    color: #ff8a8a;
+}

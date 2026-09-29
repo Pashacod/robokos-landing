@@ -2,6 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8">
+    <meta name="description" content="РобоКос: автономные роботы-газонокосилки для управляющих компаний, ТСЖ и частных домовладельцев. Регулярный покос по подписке, без сезонного найма бригад.">
+    <meta name="theme-color" content="#0f1419">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>РобоКос — автоматизированный уход за газонами</title>
     <link rel="stylesheet" href="styles.css">
@@ -10,12 +12,13 @@
 <body>
     <section id="hero">
         <div class="hero-bg" aria-hidden="true">
-            <img class="hero-bg-img" src="images/hero-bg.webp" alt="">
+            <img class="hero-bg-img" src="images/hero-bg.webp" alt="" fetchpriority="high" decoding="async">
         </div>
         <div class="hero-content">
             <h1 class="hero-title">Автономный покос травы <span class="hero-accent">без бригад и сезонного найма</span></h1>
             <p class="hero-subtitle">Регулярный покос под контролем искусственного интеллекта — автономными роботами для управляющих компаний, ТСЖ и частных домовладельцев, без сезонного найма бригад косарей.</p>
             <p class="hero-crisis">Рабочих рук не хватает — города зарастают бурьяном. Мы знаем, что с этим делать.</p>
+            <a class="btn btn-primary hero-cta" href="#request-form">Оставить заявку</a>
         </div>
     </section>
 
@@ -24,27 +27,27 @@
         <div class="problem-solution-grid">
             <div class="problem-solution-block reveal">
                 <h3 class="label-eyebrow">Проблема</h3>
-                <div class="problem-solution-image-wrap"><img class="problem-solution-image" src="images/problem-crew.png" alt="Управляющий наблюдает за бригадой косарей, которая срывает график из-за непогоды"></div>
+                <div class="problem-solution-image-wrap"><img loading="lazy" decoding="async" class="problem-solution-image" src="images/problem-crew.png" alt="Управляющий наблюдает за бригадой косарей, которая срывает график из-за непогоды"></div>
                 <p>Бригады косарей меняются в середине сезона, погода срывает график покоса, а качество работы зависит от того, какая бригада в этот раз вышла на объект.</p>
             </div>
             <div class="problem-solution-block reveal">
                 <h3 class="label-eyebrow">Решение</h3>
-                <div class="problem-solution-image-wrap"><img class="problem-solution-image" src="images/solution-robots.png" alt="Роботы-газонокосилки работают на территории жилого комплекса"></div>
+                <div class="problem-solution-image-wrap"><img loading="lazy" decoding="async" class="problem-solution-image" src="images/solution-robots.png" alt="Роботы-газонокосилки работают на территории жилого комплекса"></div>
                 <p>Роботам не нужен отпуск, больничный и ежегодное переобучение — они работают автономно по расписанию, сезон за сезоном.</p>
             </div>
             <div class="problem-solution-block reveal">
                 <h3 class="label-eyebrow">Круглосуточно</h3>
-                <div class="problem-solution-image-wrap"><img class="problem-solution-image problem-solution-image-contain" src="images/allweather.png" alt="Роботы-газонокосилки работают ночью, в дождь и грозу"></div>
+                <div class="problem-solution-image-wrap"><img loading="lazy" decoding="async" class="problem-solution-image problem-solution-image-contain" src="images/allweather.png" alt="Роботы-газонокосилки работают ночью, в дождь и грозу"></div>
                 <p>Роботы работают в любое время суток и в любую погоду — без перерывов на смену бригады.</p>
             </div>
             <div class="problem-solution-block reveal">
                 <h3 class="label-eyebrow">Надёжность</h3>
-                <div class="problem-solution-image-wrap"><img class="problem-solution-image problem-solution-image-contain" src="images/reliability-delivery.png" alt="Дроны доставляют гусеничных роботов-косилок на объект"></div>
+                <div class="problem-solution-image-wrap"><img loading="lazy" decoding="async" class="problem-solution-image problem-solution-image-contain" src="images/reliability-delivery.png" alt="Дроны доставляют гусеничных роботов-косилок на объект"></div>
                 <p>Если один робот выходит из строя, на объект автоматически направляется другой — покос не останавливается.</p>
             </div>
             <div class="problem-solution-block problem-solution-block-wide reveal">
                 <h3 class="label-eyebrow">Тяжёлая техника</h3>
-                <div class="problem-solution-image-wrap"><img class="problem-solution-image problem-solution-image-tall" src="images/heavy-equipment.png" alt="Гусеничные роботы для тяжёлых покосных работ на большой территории"></div>
+                <div class="problem-solution-image-wrap"><img loading="lazy" decoding="async" class="problem-solution-image problem-solution-image-tall" src="images/heavy-equipment.png" alt="Гусеничные роботы для тяжёлых покосных работ на большой территории"></div>
                 <p>Помимо компактных роботов-газонокосилок — тяжёлая техника для работы любой сложности: большие площади, сложный рельеф, густая растительность.</p>
             </div>
         </div>
@@ -116,10 +119,11 @@
         <p class="request-form-intro">Форма — ранний прототип и пока не подключена к реальному каналу: данные никуда не отправляются. Ниже пример того, как будет выглядеть отклик.</p>
         <form id="request-form-form">
             <label for="request-name">Имя</label>
-            <input type="text" id="request-name" name="request-name">
+            <input type="text" id="request-name" name="request-name" autocomplete="name" placeholder="Как к вам обращаться">
 
-            <label for="request-contact">Телефон или Telegram</label>
-            <input type="text" id="request-contact" name="request-contact" placeholder="+7 900 000-00-00 или @telegram">
+            <label for="request-contact">Телефон или Telegram <span class="required-mark" aria-hidden="true">*</span></label>
+            <input type="text" id="request-contact" name="request-contact" required aria-describedby="request-contact-error" autocomplete="tel" placeholder="+7 900 000-00-00 или @telegram">
+            <p id="request-contact-error" class="field-error" role="alert" hidden>Укажите телефон или Telegram, чтобы мы могли связаться.</p>
 
             <label for="request-comment">Комментарий (необязательно)</label>
             <textarea id="request-comment" name="request-comment"></textarea>
